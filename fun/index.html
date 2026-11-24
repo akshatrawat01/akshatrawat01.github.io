@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fun | Akshat Rawat</title>
+  <meta name="description" content="Small browser games about AI security: prompt injection, hidden text, filter evasion.">
+  <meta name="theme-color" content="#0a0c11">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0c11'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23cfd6e6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <header class="masthead">
+    <nav>
+      <a class="site" href="../">Akshat Rawat</a>
+      <a href="../#projects">Projects</a>
+      <a href="../cv/">CV</a>
+      <a href="./" aria-current="page">Fun</a>
+    </nav>
+  </header>
+
+  <div class="page">
+    <main id="main">
+      <h1>Fun</h1>
+      <p class="lead">Small things to poke at, mostly about how AI systems get tricked. Everything runs in your browser. Nothing you type is sent anywhere.</p>
+
+      <section>
+        <h2>Attacking AI</h2>
+        <div class="cards">
+          <a class="card" href="vault.html"><b>Talk the Vault Open</b><span>A chatbot guards a password. Four levels, each with a new defence. Get it to slip.</span></a>
+          <a class="card" href="spot.html"><b>Spot the Injection</b><span>An AI assistant is about to read these documents. Find the sentence that hijacks it.</span></a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Tools</h2>
+        <div class="cards">
+          <a class="card" href="xray.html"><b>Unicode X-Ray</b><span>Reveal invisible characters hiding in text, including secret messages only a model can read.</span></a>
+          <a class="card" href="filter.html"><b>Encoding Is Not Encryption</b><span>Run a banned phrase through encodings and watch a keyword filter stop noticing it.</span></a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>Designed and built by Akshat Rawat. &copy; <span id="year"></span></footer>
+  <script src="../assets/sky.js"></script>
+</body>
+</html>
