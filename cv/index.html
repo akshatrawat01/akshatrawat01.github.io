@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV | Akshat Rawat</title>
+  <meta name="description" content="CV of Akshat Rawat: information security, AI security exercises, detection and response.">
+  <meta name="theme-color" content="#0a0c11">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0c11'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23cfd6e6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <header class="masthead">
+    <nav>
+      <a class="site" href="../">Akshat Rawat</a>
+      <a href="../#projects">Projects</a>
+      <a href="./" aria-current="page">CV</a>
+      <a href="../fun/">Fun</a>
+    </nav>
+  </header>
+
+  <div class="page">
+    <main id="main">
+      <h1>Akshat Rawat</h1>
+      <p class="lead" style="margin-bottom:6px">Information security · AI security · Detection and response</p>
+      <p class="muted" style="font-size:14px">Stockholm, Sweden · <a href="mailto:abhijitakshat@gmail.com">abhijitakshat@gmail.com</a> · <a href="https://www.linkedin.com/in/akshat-rawat-2001">LinkedIn</a> · <a href="https://github.com/V3noOom">GitHub</a></p>
+      <p class="noprint"><button type="button" onclick="window.print()">Save as PDF</button></p>
+
+      <section>
+        <h2>Profile</h2>
+        <p>MSc Information Security student at Stockholm University. As a teaching assistant I design hands-on exercises built around scenarios, including an AI security exercise with escalating levels and an agent that reads untrusted ticket text. I've taken part in a live attack and defend exercise, and when I automate security work I keep the decisions with a person.</p>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <ul class="entries">
+          <li><b>MSc Information Security</b>, Stockholm University, Sweden <span class="date">2025 – 2027 (expected)</span><br><span class="meta">Software Security · Foundations of Data Science · Digital Forensics</span></li>
+          <li><b>BTech Computer Science and Engineering</b>, VIT Bhopal University, India <span class="date">2020 – 2024</span><br><span class="meta">Specialisation in Cyber Security and Digital Forensics</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+        <ul class="entries">
+          <li><b>Teaching Assistant</b>, Introduction to Information Security (ML478N), Stockholm University <span class="date">2026 – present</span>
+            <ul>
+              <li>Designed two self-hosted, hands-on exercises for the course revamp, both set in one scenario (a breach investigation at a fictional bank): a CyberChef cryptography lab with 8 exercises and an AI prompt injection lab, with student handouts and an answer guide.</li>
+              <li>AI exercise: five escalating levels on a locally hosted model (Ollama, Flask), each adding a defence (output filter, input blocklist, second-model judge). The last level has a ticket-triage agent that reads untrusted text, and a blue-team task has students detect the attacks.</li>
+              <li>Wrote a Python generator that gives each group unique challenge data, so an unsupervised exercise can be graded fairly.</li>
+            </ul>
+          </li>
+          <li><b>Cyber Security Engineer</b>, Inventico Apps Pvt Ltd, India <span class="date">Jul 2023 – Aug 2025</span>
+            <ul>
+              <li>Implemented and managed access control and identity management for client applications, deciding which roles could reach which systems and data.</li>
+              <li>Technical point of contact for clients, turning security and compliance requirements into clear, actionable guidance.</li>
+            </ul>
+          </li>
+          <li><b>Cyber Security Intern</b>, Madhya Pradesh State Cyber Police, Bhopal, India <span class="date">Jul 2022 – Jul 2023</span>
+            <ul>
+              <li>Wrote OSINT analytical reports used by officers in cybercrime investigations, and SOPs for non-technical staff running digital investigation tools.</li>
+              <li>Supported evidence handling and helped run cyber awareness sessions.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <ul class="entries">
+          <li><b>Sentinel Home Lab</b>, Azure SIEM / SOC <span class="date">2025</span><br><span class="meta">Built an isolated cloud lab (Microsoft Sentinel plus a Windows VM honeypot capturing 900+ real RDP brute-force attempts per day) and wrote the PowerShell automation that parses and enriches the logs, cutting manual analysis effort by about 70% while keeping triage and response decisions with a human.</span></li>
+          <li><b>Tatou</b>, red / blue team project, Software Security <span class="date">2026</span><br><span class="meta">Live attack and defend exercise: hardened a Dockerized web platform (removed an unsafe plugin endpoint, added security logging and attack-monitoring scripts) while attacking other groups' deployments. Captured flags from four groups in the first phase.</span></li>
+          <li><b>Android forensics investigation</b>, Digital Forensics <span class="date">2025</span><br><span class="meta">Formal investigation report with chain of custody, timeline reconstruction and every finding tied to specific evidence. Gaps were flagged, not hidden.</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <ul class="entries">
+          <li><b>Exercise design</b><br><span class="meta">Scenario-based labs, handouts and answer guides, per-participant challenge data, blue-team detection tasks</span></li>
+          <li><b>Generative AI security</b><br><span class="meta">LLM agents on local models (Ollama), prompt injection testing, guardrails (input and output filtering, second-model judge), human-in-the-loop design</span></li>
+          <li><b>Detection and governance</b><br><span class="meta">Microsoft Sentinel (SIEM), log analysis, forensic timelines, access control and identity management, ISO/IEC 27000 series, working knowledge of NIS2 and the EU Cyber Resilience Act</span></li>
+          <li><b>Technical</b><br><span class="meta">Python, PowerShell, Bash, SQL, Docker, Flask, Azure</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Languages</h2>
+        <p>English (professional) · Hindi (native) · Swedish (A2)</p>
+      </section>
+    </main>
+  </div>
+
+  <footer>Designed and built by Akshat Rawat. &copy; <span id="year"></span></footer>
+  <script src="../assets/sky.js"></script>
+</body>
+</html>
