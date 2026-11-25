@@ -7,116 +7,7 @@
   <meta name="description" content="Akshat Rawat. MSc Information Security at Stockholm University. Security engineering and AI security.">
   <meta name="theme-color" content="#0a0c11">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0c11'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23cfd6e6'/%3E%3Ccircle cx='8' cy='9' r='1' fill='%237a8499'/%3E%3Ccircle cx='24' cy='23' r='1.2' fill='%237a8499'/%3E%3C/svg%3E">
-  <style>
-    :root {
-      --bg: #0a0c11;
-      --text: #cfd3dc;
-      --strong: #eef0f4;
-      --muted: #7d8494;
-      --rule: rgba(255, 255, 255, 0.07);
-      --link: #a9bde3;
-      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    #sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    .skip { position: absolute; left: -999px; }
-    .skip:focus { left: 1rem; top: 1rem; background: var(--bg); padding: .4rem .7rem; z-index: 10; }
-
-    /* masthead */
-    .masthead {
-      position: relative; z-index: 2;
-      border-bottom: 1px solid var(--rule);
-      background: rgba(10, 12, 17, 0.55);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    }
-    .masthead nav {
-      max-width: 1100px; margin: 0 auto; padding: 14px 24px;
-      display: flex; align-items: center; gap: 28px; font-size: 15px;
-    }
-    .masthead .site { color: var(--strong); font-weight: 600; margin-right: auto; }
-    .masthead a { color: var(--muted); }
-    .masthead a:hover { color: var(--strong); text-decoration: none; }
-    .masthead .site:hover { color: var(--strong); }
-
-    /* layout */
-    .layout {
-      position: relative; z-index: 1;
-      max-width: 1100px; margin: 0 auto; padding: 48px 24px 0;
-      display: grid; grid-template-columns: 230px 1fr; gap: 64px;
-    }
-
-    /* sidebar */
-    .author { position: sticky; top: 32px; align-self: start; font-size: 14px; }
-    .avatar {
-      width: 150px; height: 150px; border-radius: 50%; display: block; object-fit: cover;
-      border: 1px solid var(--rule);
-      background: radial-gradient(circle at 35% 30%, #2a3246, #12151d 70%);
-      color: var(--strong); font-size: 44px; font-weight: 300; letter-spacing: .04em;
-      line-height: 150px; text-align: center;
-    }
-    .author h1 { font-size: 22px; color: var(--strong); font-weight: 600; margin: 18px 0 2px; line-height: 1.3; }
-    .author .bio { color: var(--muted); margin: 0 0 14px; }
-    .author .label { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
-    .author ul { list-style: none; margin: 0; padding: 0; }
-    .author li { margin: 4px 0; }
-    .author li a { color: var(--text); display: inline-flex; align-items: center; gap: 9px; }
-    .author li a:hover { color: var(--strong); text-decoration: none; }
-    .author svg { width: 15px; height: 15px; fill: none; stroke: var(--muted); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-    .author .loc { display: flex; gap: 9px; align-items: center; color: var(--text); margin-bottom: 14px; }
-
-    /* content */
-    main { max-width: 680px; padding-bottom: 40px; }
-    main h2 {
-      font-size: 20px; color: var(--strong); font-weight: 600;
-      margin: 0 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);
-    }
-    main section { margin-bottom: 52px; }
-    main p { margin: 0 0 16px; }
-    .note {
-      font-size: 14.5px; padding: 12px 16px; margin-bottom: 22px;
-      border: 1px solid var(--rule); border-radius: 6px; background: rgba(255,255,255,0.02);
-    }
-    .note b { color: var(--strong); font-weight: 600; }
-    .entries { list-style: disc; padding-left: 20px; margin: 0; }
-    .entries li { margin-bottom: 14px; }
-    .entries li::marker { color: var(--muted); }
-    .entries b { color: var(--strong); font-weight: 600; }
-    .entries .meta { color: var(--muted); font-size: 14px; }
-    .date { color: var(--muted); font-size: 13px; font-family: var(--mono); white-space: nowrap; margin-left: 6px; }
-    .plain { padding-left: 20px; margin: 0; }
-    .plain li { margin-bottom: 4px; }
-    .plain li::marker { color: var(--muted); }
-
-    footer {
-      position: relative; z-index: 1;
-      max-width: 1100px; margin: 0 auto; padding: 28px 24px 48px;
-      border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted);
-    }
-    footer a { color: var(--muted); }
-    footer a:hover { color: var(--text); }
-
-    @media (max-width: 820px) {
-      .layout { grid-template-columns: 1fr; gap: 36px; padding-top: 32px; }
-      .author { position: static; display: grid; grid-template-columns: 96px 1fr; gap: 0 20px; align-items: center; }
-      .avatar { width: 96px; height: 96px; line-height: 96px; font-size: 30px; grid-row: span 2; }
-      .author h1 { margin-top: 0; }
-      .author .rest { grid-column: 1 / -1; margin-top: 16px; }
-      .author ul { display: flex; flex-wrap: wrap; gap: 4px 18px; }
-      .masthead nav { gap: 18px; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
   <canvas id="sky" aria-hidden="true"></canvas>
@@ -124,18 +15,16 @@
 
   <header class="masthead">
     <nav>
-      <a class="site" href="#">Akshat Rawat</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="cv.pdf">CV</a>
+      <a class="site" href="./">Akshat Rawat</a>
+      <a href="./#projects">Projects</a>
+      <a href="cv/">CV</a>
+      <a href="fun/">Fun</a>
     </nav>
   </header>
 
   <div class="layout">
     <aside class="author">
-      <!-- For a photo: add avatar.jpg to the repo and replace this div with
-           <img class="avatar" src="avatar.jpg" alt="Akshat Rawat"> -->
-      <div class="avatar" aria-hidden="true">AR</div>
+      <img class="avatar" src="assets/avatar.jpg" alt="Akshat Rawat" width="150" height="150">
       <div>
         <h1>Akshat Rawat</h1>
         <p class="bio">MSc Information Security, Stockholm University</p>
@@ -150,7 +39,7 @@
           <li><a href="mailto:abhijitakshat@gmail.com"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a></li>
           <li><a href="https://www.linkedin.com/in/akshat-rawat-2001"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>LinkedIn</a></li>
           <li><a href="https://github.com/V3noOom"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5a3 3 0 0 0-.9-2.4c3-.3 6-1.5 6-6.6a5 5 0 0 0-1.4-3.6 4.7 4.7 0 0 0-.1-3.5s-1.1-.3-3.6 1.4a12.4 12.4 0 0 0-6.5 0C6.1 1.6 5 1.9 5 1.9a4.7 4.7 0 0 0-.1 3.5A5 5 0 0 0 3.5 9c0 5.1 3 6.3 6 6.6a3 3 0 0 0-.9 2.3V22"/></svg>GitHub</a></li>
-          <li><a href="cv.pdf"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>CV</a></li>
+          <li><a href="cv/"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>CV</a></li>
         </ul>
       </div>
     </aside>
@@ -160,14 +49,16 @@
         <h2>About me</h2>
         <p>I'm an MSc student in Information Security at Stockholm University. I'm interested in how systems fail under pressure, and lately most of that curiosity goes into AI security: how language models and agents can be steered into doing things they shouldn't, and how to defend against it.</p>
         <p>Before my master's I interned with the Madhya Pradesh State Cyber Police in Bhopal, writing OSINT reports for cybercrime investigations, and then spent two years as a Cyber Security Engineer at Inventico Apps working on access control and identity management. Right now I'm a teaching assistant for Introduction to Information Security at Stockholm University, where I design and build the hands-on labs students work through.</p>
+        <p>If you like poking at things, the <a href="fun/">Fun</a> page has a few small AI security games that run in your browser.</p>
       </section>
 
       <section id="projects">
         <h2>Projects</h2>
         <ul class="entries">
-          <li><b><a href="https://github.com/V3noOom">Sentinel SIEM Home Lab</a></b>: a Microsoft Sentinel lab fed with my own logs, used to write detection rules and practise investigations. <span class="date">2025</span></li>
-          <li><b><a href="https://github.com/V3noOom">Enigma Machine Simulation</a></b>: the WWII cipher machine rebuilt in code, with rotors, reflector and plugboard.</li>
-          <li><b>Tatou</b>: a web application my group built and hardened for the Software Security course, in a CTF-style setup where other teams try to break in. <span class="date">2026</span></li>
+          <li><b>Sentinel Home Lab</b>: an isolated Azure lab with Microsoft Sentinel and a Windows honeypot that catches 900+ RDP brute-force attempts a day, plus PowerShell that parses and enriches the logs. <span class="date">2025</span></li>
+          <li><b>Tatou</b>: a live attack and defend exercise for Software Security. We hardened a Dockerized web platform while attacking other groups, and captured flags from four groups in the first phase. <span class="date">2026</span></li>
+          <li><b>Android forensics case</b>: a formal investigation report for Digital Forensics, with chain of custody, a reconstructed timeline and every finding tied to evidence. <span class="date">2025</span></li>
+          <li><b>Enigma Machine Simulation</b>: the WWII cipher machine rebuilt in code, with rotors, reflector and plugboard.</li>
         </ul>
       </section>
 
@@ -178,14 +69,7 @@
           <li><b>Cyber Security Engineer</b>, Inventico Apps, India <span class="date">Jul 2023 – Aug 2025</span><br><span class="meta">Implemented and managed access control and identity management for client applications, and was the technical point of contact for clients on security and compliance requirements.</span></li>
           <li><b>Cyber Security Intern</b>, Madhya Pradesh State Cyber Police, Bhopal <span class="date">Jul 2022 – Jul 2023</span><br><span class="meta">Wrote OSINT reports used by officers in cybercrime investigations, wrote SOPs for staff using digital investigation tools, supported evidence handling, and helped run cyber awareness sessions.</span></li>
         </ul>
-      </section>
-
-      <section id="education">
-        <h2>Education</h2>
-        <ul class="entries">
-          <li><b>MSc Information Security</b>, Stockholm University <span class="date">2025 – 2027</span></li>
-          <li><b>BTech Computer Science and Engineering</b>, VIT Bhopal University <span class="date">2020 – 2024</span><br><span class="meta">Specialisation in Cyber Security and Digital Forensics.</span></li>
-        </ul>
+        <p class="muted" style="font-size:14px">Full details on the <a href="cv/">CV page</a>.</p>
       </section>
 
       <section id="elsewhere">
@@ -193,120 +77,13 @@
         <ul class="plain">
           <li><a href="https://github.com/V3noOom">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/akshat-rawat-2001">LinkedIn</a></li>
-          <li><a href="cv.pdf">CV (PDF)</a></li>
+          <li><a href="mailto:abhijitakshat@gmail.com">Email</a></li>
         </ul>
       </section>
     </main>
   </div>
 
-  <footer>
-    Designed and built by Akshat Rawat. &copy; <span id="year"></span>
-  </footer>
-
-  <script>
-  (() => {
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const c = document.getElementById('sky');
-    const ctx = c.getContext('2d');
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let W, H, dpr, stars = [], nebula;
-    let shoot = null, nextShoot = 9000 + Math.random() * 12000;
-
-    function rand(a, b) { return a + Math.random() * (b - a); }
-
-    function build() {
-      dpr = Math.min(devicePixelRatio || 1, 2);
-      W = innerWidth; H = innerHeight;
-      c.width = W * dpr; c.height = H * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      // three depth layers: far stars are many, tiny and slow
-      const count = Math.round((W * H) / 3800);
-      stars = [];
-      for (let i = 0; i < count; i++) {
-        const depth = Math.random();
-        stars.push({
-          x: Math.random() * W, y: Math.random() * H,
-          r: depth < 0.75 ? rand(0.3, 0.7) : depth < 0.95 ? rand(0.7, 1.1) : rand(1.1, 1.5),
-          a: depth < 0.75 ? rand(0.15, 0.45) : rand(0.4, 0.8),
-          v: 0.004 + depth * 0.018,
-          tw: rand(0.0004, 0.0016), ph: Math.random() * Math.PI * 2,
-          hue: Math.random() < 0.15 ? 'warm' : Math.random() < 0.3 ? 'cool' : 'white'
-        });
-      }
-
-      // faint nebula, drawn once to an offscreen canvas
-      nebula = document.createElement('canvas');
-      nebula.width = W; nebula.height = H;
-      const n = nebula.getContext('2d');
-      const blob = (x, y, r, col) => {
-        const g = n.createRadialGradient(x, y, 0, x, y, r);
-        g.addColorStop(0, col); g.addColorStop(1, 'rgba(0,0,0,0)');
-        n.fillStyle = g; n.fillRect(0, 0, W, H);
-      };
-      blob(W * 0.78, H * 0.18, Math.max(W, H) * 0.45, 'rgba(60, 80, 150, 0.10)');
-      blob(W * 0.15, H * 0.85, Math.max(W, H) * 0.40, 'rgba(90, 60, 130, 0.07)');
-      blob(W * 0.55, H * 0.55, Math.max(W, H) * 0.30, 'rgba(40, 90, 120, 0.04)');
-    }
-
-    const colors = { white: '230,234,245', cool: '180,200,255', warm: '255,226,200' };
-
-    function frame(now, dt) {
-      ctx.clearRect(0, 0, W, H);
-      ctx.drawImage(nebula, 0, 0);
-
-      for (const s of stars) {
-        if (!reduced) {
-          s.x -= s.v * dt * 0.06;
-          s.y += s.v * dt * 0.015;
-          if (s.x < -2) s.x = W + 2;
-          if (s.y > H + 2) s.y = -2;
-        }
-        const tw = reduced ? 1 : 0.65 + 0.35 * Math.sin(now * s.tw + s.ph);
-        ctx.fillStyle = `rgba(${colors[s.hue]},${(s.a * tw).toFixed(3)})`;
-        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
-      }
-
-      if (reduced) return;
-
-      // a rare, faint shooting star
-      nextShoot -= dt;
-      if (!shoot && nextShoot <= 0) {
-        shoot = { x: rand(W * 0.3, W), y: rand(0, H * 0.4), life: 0, max: 900, ang: rand(2.5, 2.8), sp: rand(0.45, 0.65) };
-        nextShoot = 14000 + Math.random() * 16000;
-      }
-      if (shoot) {
-        shoot.life += dt;
-        const p = shoot.life / shoot.max;
-        const hx = shoot.x + Math.cos(shoot.ang) * shoot.sp * shoot.life;
-        const hy = shoot.y + Math.sin(shoot.ang) * shoot.sp * shoot.life;
-        const tx = hx - Math.cos(shoot.ang) * 90, ty = hy - Math.sin(shoot.ang) * 90;
-        const alpha = Math.sin(Math.PI * Math.min(p, 1)) * 0.5;
-        const g = ctx.createLinearGradient(hx, hy, tx, ty);
-        g.addColorStop(0, `rgba(230,236,255,${alpha})`);
-        g.addColorStop(1, 'rgba(230,236,255,0)');
-        ctx.strokeStyle = g; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(hx, hy); ctx.lineTo(tx, ty); ctx.stroke();
-        if (p >= 1) shoot = null;
-      }
-    }
-
-    build();
-    let resizeTimer;
-    addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => { build(); if (reduced) frame(0, 0); }, 150);
-    });
-
-    if (reduced) { frame(0, 0); return; }
-    let last = performance.now();
-    (function loop(now) {
-      const dt = Math.min(now - last, 50); last = now;
-      frame(now, dt);
-      requestAnimationFrame(loop);
-    })(last);
-  })();
-  </script>
+  <footer>Designed and built by Akshat Rawat. &copy; <span id="year"></span></footer>
+  <script src="assets/sky.js"></script>
 </body>
 </html>
