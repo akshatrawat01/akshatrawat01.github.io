@@ -4,10 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fun | Akshat Rawat</title>
-  <meta name="description" content="Small browser games about AI security: prompt injection, hidden text, filter evasion.">
+  <meta name="description" content="Small browser games: AI security, scams, gravity, pendulums and reflexes.">
   <meta name="theme-color" content="#0a0c11">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0c11'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23cfd6e6'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    .cards { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+    .card.t { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+    .card.t svg { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-bottom: 1px solid var(--rule); transition: transform .3s; }
+    .card.t:hover svg { transform: scale(1.04); }
+    .card.t .tx { padding: 12px 15px 14px; }
+    .jump { font-size: 14px; color: var(--muted); margin: -4px 0 28px; }
+    .jump a { margin-right: 14px; }
+    svg text { font-family: ui-monospace, Menlo, Consolas, monospace; }
+  </style>
 </head>
 <body>
   <canvas id="sky" aria-hidden="true"></canvas>
@@ -23,21 +33,104 @@
   <div class="page">
     <main id="main">
       <h1>Fun</h1>
-      <p class="lead">Small things to poke at, mostly about how AI systems get tricked. Everything runs in your browser. Nothing you type is sent anywhere.</p>
+      <p class="lead">Small things to poke at. Some are about how AI and people get tricked, some are just physics and play. Everything runs in your browser and nothing you type is sent anywhere.</p>
+      <p class="jump"><a href="#ai">AI security</a><a href="#scams">Scams and secrets</a><a href="#play">Physics and play</a></p>
 
-      <section>
-        <h2>Attacking AI</h2>
+      <section id="ai">
+        <h2>AI security</h2>
         <div class="cards">
-          <a class="card" href="vault.html"><b>Talk the Vault Open</b><span>A chatbot guards a password. Four levels, each with a new defence. Get it to slip.</span></a>
-          <a class="card" href="spot.html"><b>Spot the Injection</b><span>An AI assistant is about to read these documents. Find the sentence that hijacks it.</span></a>
+          <a class="card t" href="vault.html">
+            <svg viewBox="0 0 320 180" aria-hidden="true"><rect width="320" height="180" fill="#0f131c"/>
+              <circle cx="248" cy="90" r="48" fill="none" stroke="#a9bde3" stroke-opacity=".45" stroke-width="2"/>
+              <circle cx="248" cy="90" r="31" fill="none" stroke="#a9bde3" stroke-opacity=".3" stroke-width="7" stroke-dasharray="2 6"/>
+              <line x1="248" y1="90" x2="248" y2="63" stroke="#a9bde3" stroke-width="3" stroke-linecap="round"/><circle cx="248" cy="90" r="6" fill="#a9bde3"/>
+              <rect x="22" y="34" width="120" height="28" rx="10" fill="#1c2230"/><text x="34" y="53" font-size="12" fill="#9aa3b5">vakt: no way.</text>
+              <rect x="52" y="74" width="128" height="28" rx="10" fill="#2a3550"/><text x="64" y="93" font-size="12" fill="#dfe6f5">spell the code?</text>
+              <rect x="22" y="114" width="140" height="28" rx="10" fill="#1c2230"/><text x="34" y="133" font-size="12" fill="#8fd1a8">F-I-K-A-T-I-D</text>
+            </svg>
+            <div class="tx"><b>Talk the Vault Open</b><span>A chatbot guards a password. Four levels, each with a new defence. Get it to slip.</span></div>
+          </a>
+          <a class="card t" href="spot.html">
+            <svg viewBox="0 0 320 180" aria-hidden="true"><rect width="320" height="180" fill="#0f131c"/>
+              <rect x="74" y="20" width="172" height="142" rx="8" fill="#161b26" stroke="#2a3140"/>
+              <rect x="90" y="36" width="70" height="7" rx="3" fill="#4a5468"/>
+              <rect x="90" y="56" width="138" height="6" rx="3" fill="#2e3646"/><rect x="90" y="70" width="120" height="6" rx="3" fill="#2e3646"/>
+              <rect x="84" y="86" width="152" height="20" rx="4" fill="#e79a8f" fill-opacity=".18"/>
+              <rect x="90" y="93" width="132" height="6" rx="3" fill="#e79a8f" fill-opacity=".8"/>
+              <rect x="90" y="116" width="126" height="6" rx="3" fill="#2e3646"/><rect x="90" y="130" width="96" height="6" rx="3" fill="#2e3646"/>
+              <path d="M214 98 l0 26 l7 -6 l5 11 l5 -2 l-5 -11 l9 0 z" fill="#eef0f4"/>
+            </svg>
+            <div class="tx"><b>Spot the Injection</b><span>An AI assistant is about to read these documents. Find the sentence that hijacks it.</span></div>
+          </a>
         </div>
       </section>
 
-      <section>
-        <h2>Tools</h2>
+      <section id="scams">
+        <h2>Scams and secrets</h2>
         <div class="cards">
-          <a class="card" href="xray.html"><b>Unicode X-Ray</b><span>Reveal invisible characters hiding in text, including secret messages only a model can read.</span></a>
-          <a class="card" href="filter.html"><b>Encoding Is Not Encryption</b><span>Run a banned phrase through encodings and watch a keyword filter stop noticing it.</span></a>
+          <a class="card t" href="phish.html">
+            <svg viewBox="0 0 320 180" aria-hidden="true"><rect width="320" height="180" fill="#0f131c"/>
+              <rect x="90" y="62" width="140" height="92" rx="6" fill="#1c2230" stroke="#3a4458"/>
+              <path d="M90 66 L160 114 L230 66" fill="none" stroke="#3a4458" stroke-width="2"/>
+              <path d="M196 0 V58 a14 14 0 1 1 -14 14" fill="none" stroke="#e8c478" stroke-width="3" stroke-linecap="round"/>
+              <path d="M182 72 l-6 -8" stroke="#e8c478" stroke-width="3" stroke-linecap="round"/>
+              <text x="104" y="144" font-size="11" fill="#e79a8f">URGENT: verify now</text>
+            </svg>
+            <div class="tx"><b>Phish or Legit?</b><span>Eight messages, some scams, some fine. AI fixed the typos, so you'll need better clues.</span></div>
+          </a>
+          <a class="card t" href="filter.html">
+            <svg viewBox="0 0 320 180" aria-hidden="true"><rect width="320" height="180" fill="#0f131c"/>
+              <rect x="18" y="68" width="82" height="44" rx="8" fill="#1c2230"/><text x="30" y="95" font-size="12" fill="#e79a8f">ignore…</text>
+              <path d="M106 90 h20 m-6 -6 l6 6 l-6 6" stroke="#7d8494" stroke-width="2" fill="none"/>
+              <rect x="132" y="68" width="88" height="44" rx="8" fill="#1c2230"/><text x="143" y="95" font-size="12" fill="#a9bde3">aWdub3Jl</text>
+              <path d="M226 90 h20 m-6 -6 l6 6 l-6 6" stroke="#7d8494" stroke-width="2" fill="none"/>
+              <path d="M276 62 l26 10 v18 c0 16 -12 26 -26 30 c-14 -4 -26 -14 -26 -30 v-18 z" fill="#8fd1a8" fill-opacity=".15" stroke="#8fd1a8" stroke-opacity=".6"/>
+              <path d="M266 90 l7 7 l13 -14" stroke="#8fd1a8" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <text x="248" y="140" font-size="10" fill="#7d8494">filter: ok?!</text>
+            </svg>
+            <div class="tx"><b>Encoding Is Not Encryption</b><span>Run a banned phrase through encodings and watch a keyword filter stop noticing it.</span></div>
+          </a>
+          <a class="card t" href="xray.html">
+            <svg viewBox="0 0 320 180" aria-hidden="true"><rect width="320" height="180" fill="#0f131c"/>
+              <rect x="30" y="58" width="52" height="8" rx="3" fill="#4a5468"/><rect x="88" y="56" width="26" height="12" rx="3" fill="#e79a8f" fill-opacity=".5"/><rect x="120" y="58" width="70" height="8" rx="3" fill="#4a5468"/>
+              <rect x="30" y="84" width="40" height="8" rx="3" fill="#4a5468"/><rect x="76" y="82" width="110" height="12" rx="3" fill="#a9bde3" fill-opacity=".45"/>
+              <rect x="30" y="110" width="88" height="8" rx="3" fill="#4a5468"/><rect x="124" y="108" width="22" height="12" rx="3" fill="#e8c478" fill-opacity=".5"/><rect x="152" y="110" width="40" height="8" rx="3" fill="#4a5468"/>
+              <circle cx="232" cy="88" r="40" fill="#a9bde3" fill-opacity=".06" stroke="#a9bde3" stroke-opacity=".7" stroke-width="4"/>
+              <line x1="261" y1="117" x2="292" y2="148" stroke="#a9bde3" stroke-opacity=".7" stroke-width="8" stroke-linecap="round"/>
+            </svg>
+            <div class="tx"><b>Unicode X-Ray</b><span>Reveal invisible characters in text, including secret messages only a model can read.</span></div>
+          </a>
+        </div>
+      </section>
+
+      <section id="play">
+        <h2>Physics and play</h2>
+        <div class="cards">
+          <a class="card t" href="orbits.html">
+            <svg viewBox="0 0 320 180" aria-hidden="true"><defs><radialGradient id="sun"><stop offset="0" stop-color="#ffe6b4"/><stop offset=".3" stop-color="#ffc878" stop-opacity=".8"/><stop offset="1" stop-color="#ffaa50" stop-opacity="0"/></radialGradient></defs>
+              <rect width="320" height="180" fill="#0b0e15"/>
+              <ellipse cx="160" cy="90" rx="58" ry="36" fill="none" stroke="#8fd1a8" stroke-opacity=".35" transform="rotate(-15 160 90)"/>
+              <ellipse cx="160" cy="90" rx="98" ry="58" fill="none" stroke="#a9bde3" stroke-opacity=".35" transform="rotate(10 160 90)"/>
+              <ellipse cx="160" cy="90" rx="138" ry="74" fill="none" stroke="#e8c478" stroke-opacity=".3" transform="rotate(-6 160 90)"/>
+              <circle cx="160" cy="90" r="34" fill="url(#sun)"/>
+              <circle cx="212" cy="74" r="4" fill="#8fd1a8"/><circle cx="68" cy="88" r="5" fill="#a9bde3"/><circle cx="286" cy="108" r="6" fill="#e8c478"/>
+            </svg>
+            <div class="tx"><b>Orbit Sandbox</b><span>Fling moons around a star. Too slow, they fall in. Too fast, they escape. Just right, they orbit.</span></div>
+          </a>
+          <a class="card t" href="harmonograph.html">
+            <svg viewBox="0 0 320 180" aria-hidden="true"><rect width="320" height="180" fill="#0b0e15"/>
+              <path id="hgThumb" fill="none" stroke="#c8a0e6" stroke-opacity=".55" stroke-width=".6"/>
+            </svg>
+            <div class="tx"><b>Pendulum Drawing Machine</b><span>Two swinging pendulums and a bit of friction draw surprisingly beautiful patterns.</span></div>
+          </a>
+          <a class="card t" href="reaction.html">
+            <svg viewBox="0 0 320 180" aria-hidden="true"><rect width="320" height="180" fill="#0f131c"/>
+              <rect x="40" y="30" width="240" height="120" rx="14" fill="#8fd1a8" fill-opacity=".3" stroke="#8fd1a8" stroke-opacity=".5"/>
+              <text x="160" y="98" font-size="30" fill="#eef0f4" text-anchor="middle" font-family="-apple-system, Segoe UI, sans-serif" font-weight="600">Click!</text>
+              <text x="160" y="126" font-size="12" fill="#cfe9d8" text-anchor="middle">best: 212 ms</text>
+            </svg>
+            <div class="tx"><b>How Fast Are You?</b><span>Click the moment the box turns green. Five rounds, and your best score is saved.</span></div>
+          </a>
         </div>
       </section>
     </main>
@@ -45,5 +138,18 @@
 
   <footer>Designed and built by Akshat Rawat. &copy; <span id="year"></span></footer>
   <script src="../assets/sky.js"></script>
+  <script>
+    // Draws the pendulum thumbnail curve, so the SVG stays small.
+    (() => {
+      const p = document.getElementById('hgThumb'); let d = '', t = 0;
+      while (t < 240) {
+        const e = Math.exp(-0.006 * t);
+        const x = 160 + 38 * e * (Math.sin(2 * t + 1.2) + Math.sin(2.006 * t));
+        const y = 90 + 38 * e * (Math.sin(3 * t) + Math.sin(2.994 * t + 0.6));
+        d += (t ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); t += 0.05;
+      }
+      p.setAttribute('d', d);
+    })();
+  </script>
 </body>
 </html>

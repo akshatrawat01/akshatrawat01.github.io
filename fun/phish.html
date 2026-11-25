@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phish or Legit? | Akshat Rawat</title>
+  <meta name="description" content="Eight messages. Decide which ones are scams.">
+  <meta name="theme-color" content="#0a0c11">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0c11'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23cfd6e6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    .mail { background: rgba(0,0,0,.3); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; }
+    .mail .meta { font-family: var(--mono); font-size: 12.5px; color: var(--muted); border-bottom: 1px dashed var(--rule); padding-bottom: 8px; margin-bottom: 10px; white-space: pre-wrap; }
+    .mail .subj { color: var(--strong); font-weight: 600; margin-bottom: 6px; }
+    .mail .body { white-space: pre-wrap; font-size: 15px; }
+    .choices { display: flex; gap: 10px; margin-top: 14px; }
+    .choices button { flex: 1; padding: 10px; font-size: 15px; }
+    .progress { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+    #why ul { margin: 6px 0 0; padding-left: 18px; font-size: 14.5px; }
+  </style>
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <header class="masthead">
+    <nav>
+      <a class="site" href="../">Akshat Rawat</a>
+      <a href="../#projects">Projects</a>
+      <a href="../cv/">CV</a>
+      <a href="./" aria-current="page">Fun</a>
+    </nav>
+  </header>
+
+  <div class="page">
+    <main id="main">
+      <a class="back" href="./">← Fun</a>
+      <h1>Phish or Legit?</h1>
+      <p class="lead">Eight messages landed in your inbox. Some are scams, some are perfectly normal. AI now writes scam messages with flawless spelling, so typos won't save you. Look at who is asking, and what they want you to do.</p>
+
+      <div class="row" style="justify-content:space-between;margin-bottom:10px">
+        <span class="progress" id="prog"></span><span class="progress" id="score"></span>
+      </div>
+      <div class="panel">
+        <div class="mail" id="mail"></div>
+        <div class="choices" id="choices">
+          <button type="button" id="bPhish">Phish</button>
+          <button type="button" id="bLegit">Legit</button>
+        </div>
+        <div id="why" style="margin-top:14px"></div>
+        <div class="row" style="margin-top:10px"><button class="primary" id="next" style="display:none">Next</button></div>
+      </div>
+      <p class="muted" style="font-size:13.5px">All senders and companies here are made up.</p>
+    </main>
+  </div>
+
+  <footer>Designed and built by Akshat Rawat. &copy; <span id="year"></span></footer>
+  <script src="../assets/sky.js"></script>
+  <script>
+  (() => {
+    const MSGS = [
+      { from: 'NordPost <delivery@nordpost-parcel.info>', subj: 'Your parcel is on hold', phish: true,
+        body: 'We tried to deliver your parcel today, but a customs fee of 29 kr is unpaid.\n\nPay within 24 hours or the parcel will be returned to the sender:\nnordpost-parcel.info/pay',
+        flags: ['The domain is not the company\'s own, it just contains the name.', 'A tiny fee is bait: the real goal is your card details.', 'A 24-hour deadline is there to stop you thinking.'] },
+      { from: 'Nordhavn Bank <no-reply@nordhavnbank.se>', subj: 'Your November statement is ready', phish: false,
+        body: 'Your monthly statement is now available.\n\nOpen the app, or type nordhavnbank.se into your browser yourself, to read it.\n\nWe will never ask for your password or codes by email.',
+        flags: ['No link to click, it tells you to go there yourself.', 'Nothing urgent, nothing asked of you.', 'The sender domain matches the bank.'] },
+      { from: 'IT Service Desk <it-helpdesk@outlook-mailbox.com>', subj: 'Mailbox 98% full: action required', phish: true,
+        body: 'Your university mailbox will stop receiving email today.\n\nVerify your account now to get 50 GB of free extra storage.\n\n[ Verify now ]',
+        flags: ['Your IT department does not email from a free webmail address.', 'A "verify" button on a storage warning is a classic password grab.', 'Threat plus reward in the same message.'] },
+      { from: 'Anna Lind <anna.lind.ceo@gmail.com>', subj: 'Quick favour', phish: true,
+        body: 'Are you at your desk? I\'m stuck in a meeting and need you to buy 5 gift cards (1000 kr each) for a client.\n\nSend me the codes and I\'ll pay you back today. Don\'t call, I can\'t talk right now.',
+        flags: ['The boss, on a private Gmail, asking for gift cards.', 'Gift card codes are untraceable cash, which is why scammers love them.', '"Don\'t call" blocks the one check that would expose it.'] },
+      { from: 'CodeHub <noreply@codehub.com>', subj: 'A new SSH key was added to your account', phish: false,
+        body: 'A new SSH key named "laptop-2026" was added to your account.\n\nIf this was you, there is nothing to do. If not, open CodeHub and remove it under Settings, then SSH keys.',
+        flags: ['It reports something you just did, it doesn\'t ask you to act.', 'It points you to the settings page instead of a link.', 'When in doubt, check by going to the site yourself, never through the email.'] },
+      { from: 'Tax Agency <refund@skatt-refund-se.com>', subj: 'You are entitled to a refund of 3 412 kr', phish: true,
+        body: 'Following a review of your 2025 tax return, you are entitled to a refund of 3 412 kr.\n\nTo receive the payment, sign in with your e-ID and confirm your bank details before 30 November.',
+        flags: ['Tax agencies pay refunds automatically, they don\'t email links to claim them.', 'The domain is a lookalike.', 'Perfect grammar and a polite tone: this is what AI-written phishing looks like.'] },
+      { from: 'Lina Berg <lina.berg@nordhavnbank.se>', subj: 'Team lunch on Friday', phish: false,
+        body: 'Hi all,\n\nWe\'re booking a table for Friday at 12. Reply by Thursday if you\'re in. No need to bring anything.\n\nLina',
+        flags: ['A colleague, from the company domain, about something ordinary.', 'No link, no attachment, no request for money or data.'] },
+      { from: 'SMS from +46 72 *** ** 18', subj: 'Text message', phish: true,
+        body: 'Hi Mum, I dropped my phone in the toilet, this is my new number. Can you help me pay a bill today? It\'s urgent, I\'ll explain later ❤️',
+        flags: ['The "Hi Mum/Dad" scam: new number, urgent money, no details.', 'Call the old number or ask something only your child would know.', 'Voice-cloning AI now lets scammers follow up with a fake call too.'] }
+    ];
+    for (let i = MSGS.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [MSGS[i], MSGS[j]] = [MSGS[j], MSGS[i]]; }
+
+    let i = 0, score = 0;
+    const $ = id => document.getElementById(id);
+    function show() {
+      const m = MSGS[i];
+      $('prog').textContent = 'Message ' + (i + 1) + ' of ' + MSGS.length; $('score').textContent = 'Score ' + score;
+      $('mail').innerHTML = '<div class="meta"></div><div class="subj"></div><div class="body"></div>';
+      $('mail').querySelector('.meta').textContent = 'From: ' + m.from;
+      $('mail').querySelector('.subj').textContent = m.subj;
+      $('mail').querySelector('.body').textContent = m.body;
+      $('choices').style.display = ''; $('why').innerHTML = ''; $('next').style.display = 'none';
+    }
+    function answer(saysPhish) {
+      const m = MSGS[i], right = saysPhish === m.phish;
+      if (right) score++;
+      $('score').textContent = 'Score ' + score;
+      $('choices').style.display = 'none';
+      $('why').innerHTML = '<div></div><ul></ul>';
+      const head = $('why').firstChild;
+      head.className = right ? 'good' : 'bad';
+      head.textContent = (right ? 'Correct. ' : 'Not quite. ') + 'This one is ' + (m.phish ? 'a scam.' : 'legit.');
+      m.flags.forEach(f => { const li = document.createElement('li'); li.textContent = f; $('why').lastChild.appendChild(li); });
+      $('next').textContent = i === MSGS.length - 1 ? 'See score' : 'Next';
+      $('next').style.display = '';
+    }
+    $('bPhish').onclick = () => answer(true);
+    $('bLegit').onclick = () => answer(false);
+    $('next').onclick = () => {
+      if (i < MSGS.length - 1) { i++; show(); return; }
+      $('prog').textContent = 'Done';
+      $('mail').textContent = 'You got ' + score + ' of ' + MSGS.length + '. ' + (score === MSGS.length ? 'Sharp eyes.' : 'The best habit: if a message asks for money, codes or a login, go to the source yourself instead of using what the message gives you.');
+      $('why').innerHTML = ''; $('next').textContent = 'Play again'; $('next').onclick = () => location.reload();
+    };
+    show();
+  })();
+  </script>
+</body>
+</html>
